@@ -8,3 +8,4 @@
 - Tailwind를 커스터마이즈하기 위해 tailwind config파일이 필요하고 tailwind를 일반 CSS파일로 빌드하기 위해 postcss config 파일이 필요하다.
 - postcss가 tailwind.css 파일을 보고 Tailwind가 갖고 있는 모든 클래스 이름으로 바꿔준다. 또한 tailwind config 파일을 들여다보고 새 클래스 이름이 있다면 그것도 추가한다.
 - package.json에 해당 스크립트 추가 "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css" (-o은 리액트에서 import할 아웃풋이라는 의미)
+- npm install @apollo/client graphql
