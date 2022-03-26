@@ -1,0 +1,4 @@
+### Frontend Setup
+- Tailwind CSS는 utility-first 프레임워크이다. 기본적으로 Tailwind는 엄청 긴 CSS 파일이라는 뜻이다.
+- npm install -D tailwindcss
+- extension에서 Tailwind CSS IntelliSense 설치(클래스이름 자동완성 기능)
