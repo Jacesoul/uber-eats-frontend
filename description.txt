@@ -20,3 +20,7 @@
 - reactive variables는 GraphQL operation을 사용할 필요없이 application의 어디에서나 읽고 수정할수 있다.
 - reactive variables를 사용하면 어디서든 읽고 업데이트 할수있다. 그리고 저장은 apollo client에 한다.
 - 문서에 보면 reactive variables의 값이 변경되면, 그 필드를 갖는 쿼리들이 자동으로 새로고침된다고 나와있다.
+- npm install react-hook-form
+- react-hook-form을 사용하는건 단 한개의 hook을 쓰는 방식과 같다.
+- register은 useForm이 우리에게 제공하는 함수이다.
+- register은 그냥 input의 ref안에 넣으면 된다.
