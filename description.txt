@@ -24,3 +24,8 @@
 - react-hook-form을 사용하는건 단 한개의 hook을 쓰는 방식과 같다.
 - register은 useForm이 우리에게 제공하는 함수이다.
 - register은 그냥 input의 ref안에 넣으면 된다.
+- react-router-dom이 에러가 경우 1. npm install @types/react-router-dom  설치 2. react-app-env.d.ts파일에 declare module "react-router-dom" 입력하기 
+- module을 선언(declare)하는 이유는 이 module은 types에 대한 폴더가 없기 때문이다.
+- definitelyTyped는 typescript로 만들어지지 않은 npm packages들에 상응하는 거의 모든 typescript types를 담은 폴더이다.   
+- 만약 사용하는 라이브러리에 이런 에러가 뜬다면 그 라이브러리가 typescript definition을 지원하지 않기 때문이다. 
+- switch는 오직 한 route만 임포트 할수 있게 해주는 장치이다.
