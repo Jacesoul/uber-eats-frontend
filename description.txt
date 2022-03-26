@@ -2,3 +2,9 @@
 - Tailwind CSS는 utility-first 프레임워크이다. 기본적으로 Tailwind는 엄청 긴 CSS 파일이라는 뜻이다.
 - npm install -D tailwindcss
 - extension에서 Tailwind CSS IntelliSense 설치(클래스이름 자동완성 기능)
+- postcss는 CSS를 post process 할수 있게 해주는 라이브러리이다.
+- autoprefixer는 postcss의 또다른 plugin인데, 클래스 이름에 접두사 호환성을 추가해주는것이다. 예를들어 CSS property를 아직 firefox에 없는걸 사용한다면 호환 가능하도록 접두사를 붙여서 쓸수 있게 해주는것이다.
+- npx tailwindcss init 
+- Tailwind를 커스터마이즈하기 위해 tailwind config파일이 필요하고 tailwind를 일반 CSS파일로 빌드하기 위해 postcss config 파일이 필요하다.
+- postcss가 tailwind.css 파일을 보고 Tailwind가 갖고 있는 모든 클래스 이름으로 바꿔준다. 또한 tailwind config 파일을 들여다보고 새 클래스 이름이 있다면 그것도 추가한다.
+- package.json에 해당 스크립트 추가 "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css" (-o은 리액트에서 import할 아웃풋이라는 의미)
