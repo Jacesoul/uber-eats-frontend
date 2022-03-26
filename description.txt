@@ -10,3 +10,13 @@
 - package.json에 해당 스크립트 추가 "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css" (-o은 리액트에서 import할 아웃풋이라는 의미)
 - npm install @apollo/client graphql
 - "--isolatedModules"에러가 나오면 재실행하기 
+ㅔ
+### Authentication 
+- Local-only Fields는 GraphQL 서버의 스키마에 정의되지 않은 것을 말한다. 
+- Apollo client는 GraphQL state를 다루는데 굉장히 능하다.
+- local state는 server에는 없지만 application에는 있기를 바라는 state이다.
+- @client를 명시해줌으로써 GraphQL이 서버한테 요구하지 않고 client cach에 요구한다.
+- reactive variables는 Apollo client의 새 기능이다.
+- reactive variables는 GraphQL operation을 사용할 필요없이 application의 어디에서나 읽고 수정할수 있다.
+- reactive variables를 사용하면 어디서든 읽고 업데이트 할수있다. 그리고 저장은 apollo client에 한다.
+- 문서에 보면 reactive variables의 값이 변경되면, 그 필드를 갖는 쿼리들이 자동으로 새로고침된다고 나와있다.
