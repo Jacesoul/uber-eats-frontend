@@ -29,3 +29,10 @@
 - definitelyTyped는 typescript로 만들어지지 않은 npm packages들에 상응하는 거의 모든 typescript types를 담은 폴더이다.   
 - 만약 사용하는 라이브러리에 이런 에러가 뜬다면 그 라이브러리가 typescript definition을 지원하지 않기 때문이다. 
 - switch는 오직 한 route만 임포트 할수 있게 해주는 장치이다.
+
+### Tailwind CSS 
+- h-screen은 스크린 크기만큼 키우는 것이다.(height screen)
+- bg => background color
+- w : width | px : padding horizontal | py : padding vertical
+- rounded : border-radius
+- mt : margin top | mb : margin bottom
