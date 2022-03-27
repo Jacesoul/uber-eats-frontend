@@ -10,7 +10,16 @@
 - package.json에 해당 스크립트 추가 "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css" (-o은 리액트에서 import할 아웃풋이라는 의미)
 - npm install @apollo/client graphql
 - "--isolatedModules"에러가 나오면 재실행하기 
-ㅔ
+
+### Tailwind CSS 
+- h-screen은 스크린 크기만큼 키우는 것이다.(height screen)
+- bg => background color
+- w : width | px : padding horizontal | py : padding vertical
+- rounded : border-radius
+- mt : margin top | mb : margin bottom
+- tailwind의 좋은점은 일일이 css효과를 만들려면 정말 괴로운데 아름다운 class name을 통해 쉽게 할수 있도록 도와준다.
+- 일일이 CSS를 모두 작성하는 대신에 tailwind.css에 input에 대한 css를 저장하고 className에 적용해준뒤 tailwind:build해주면된다.
+
 ### Authentication 
 - Local-only Fields는 GraphQL 서버의 스키마에 정의되지 않은 것을 말한다. 
 - Apollo client는 GraphQL state를 다루는데 굉장히 능하다.
@@ -35,12 +44,8 @@
 - useMutation Hook의 첫번째 Argument는 mutation function이다. 이 function은 mutation의 방아쇠 역할을 한다.
 - useMutation Hook의 두번째 Argument는 loading, error, data 객체이다. data는 mutation으로부터 되돌아 온다는 것이다. loading은 mutation이 실행되고 있다는 의미이고 error는 mutation이 error를 반환한다는 것이다.
 - npm install -g apollo && npm install apollo 
-
-### Tailwind CSS 
-- h-screen은 스크린 크기만큼 키우는 것이다.(height screen)
-- bg => background color
-- w : width | px : padding horizontal | py : padding vertical
-- rounded : border-radius
-- mt : margin top | mb : margin bottom
-- tailwind의 좋은점은 일일이 css효과를 만들려면 정말 괴로운데 아름다운 class name을 통해 쉽게 할수 있도록 도와준다.
-- 일일이 CSS를 모두 작성하는 대신에 tailwind.css에 input에 대한 css를 저장하고 className에 적용해준뒤 tailwind:build해주면된다.
+- apollo-tooling은 백엔드에서 mutaions, query responses, input type을 전부다 typescript 정의로 자동 생성해준다. 이 말은 mutaion을 보낼때 백엔드에 데이터를 전송한다는 것을 확신할수있고 또한 response를 받으면 내가 받은 response의 type을 알수 있다. DTO가 모든것의 시작이라는 점을 기억해야한다. DTO가 schema가 되었고 schema가 프런트를 위한 typescript가 되었다.
+- apollo가 하는 일은 나의 file을 보면서 gql``태그를 사용할때마다 typescript definition을 준다.
+- apollo client:codegen src/__generated__ --target=typescript --outputFlat
+- apollo codegen은 우선 나의 file을 살펴보고 내가 필요하다고 했던 모든 변수들의 interface를 제공해준다. 그 다음 백엔드의 실재 schema를 살펴본다.
+- login component가 src폴더 밖에 까지 도달하지 못하기 때문에 codegen 생성시 src폴더에 넣어주는 것이 중요하다.
