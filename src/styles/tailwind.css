@@ -5,8 +5,4 @@
   @apply p-4 border-2 border-gray-300 text-lg font-light focus:outline-none focus:border-gray-500 transition-colors;
 }
 
-.btn {
-  @apply mt-3 text-white text-lg font-medium py-3 bg-green-600 hover:bg-green-800 transition-colors;
-}
-
 @tailwind utilities;

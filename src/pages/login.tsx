@@ -7,6 +7,8 @@ import {
   loginMutationVariables,
 } from "../__generated__/loginMutation";
 import uberLogo from "../images/uber-eats-logo.svg";
+import { Button } from "../components/button";
+import { Link } from "react-router-dom";
 
 const LOGIN_MUTAION = gql`
   mutation loginMutation($loginInput: LoginInput!) {
@@ -24,7 +26,10 @@ interface ILoginForm {
 }
 
 export const Login = () => {
-  const { register, getValues, errors, handleSubmit } = useForm<ILoginForm>();
+  const { register, getValues, errors, handleSubmit, formState } =
+    useForm<ILoginForm>({
+      mode: "onChange",
+    });
   const onCompleted = (data: loginMutation) => {
     const {
       login: { ok, error, token },
@@ -61,7 +66,7 @@ export const Login = () => {
         </h4>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className=" grid gap-3 mt-5 w-full"
+          className=" grid gap-3 mt-5 w-full mb-3"
         >
           <input
             ref={register({ required: "Email is required" })}
@@ -88,13 +93,26 @@ export const Login = () => {
           {errors.password?.type === "minLength" && (
             <FormError errorMessage="Password must be more than 10 chars."></FormError>
           )}
-          <button className="btn">{loading ? "Loading..." : "Log In"}</button>
+          <Button
+            canClick={formState.isValid}
+            loading={loading}
+            actionText={"Log In"}
+          ></Button>
           {loginMutationResult?.login.error && (
             <FormError
               errorMessage={loginMutationResult.login.error}
             ></FormError>
           )}
         </form>
+        <div>
+          New to Uber?{" "}
+          <Link
+            to="/create-account"
+            className=" text-emerald-600 hover:underline"
+          >
+            Create an Account
+          </Link>
+        </div>
       </div>
     </div>
   );
