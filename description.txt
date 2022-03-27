@@ -29,6 +29,7 @@
 - definitelyTyped는 typescript로 만들어지지 않은 npm packages들에 상응하는 거의 모든 typescript types를 담은 폴더이다.   
 - 만약 사용하는 라이브러리에 이런 에러가 뜬다면 그 라이브러리가 typescript definition을 지원하지 않기 때문이다. 
 - switch는 오직 한 route만 임포트 할수 있게 해주는 장치이다.
+- 만약 input에 name이 없으면 useForm이 찾지 못한다.
 
 ### Tailwind CSS 
 - h-screen은 스크린 크기만큼 키우는 것이다.(height screen)
@@ -36,3 +37,5 @@
 - w : width | px : padding horizontal | py : padding vertical
 - rounded : border-radius
 - mt : margin top | mb : margin bottom
+- tailwind의 좋은점은 일일이 css효과를 만들려면 정말 괴로운데 아름다운 class name을 통해 쉽게 할수 있도록 도와준다.
+- 일일이 CSS를 모두 작성하는 대신에 tailwind.css에 input에 대한 css를 저장하고 className에 적용해준뒤 tailwind:build해주면된다.
