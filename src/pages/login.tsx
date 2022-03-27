@@ -10,6 +10,7 @@ import {
 import uberLogo from "../images/uber-eats-logo.svg";
 import { Button } from "../components/button";
 import { Link } from "react-router-dom";
+import { isLoggedInVar } from "../apollo";
 
 const LOGIN_MUTAION = gql`
   mutation loginMutation($loginInput: LoginInput!) {
@@ -37,6 +38,7 @@ export const Login = () => {
     } = data;
     if (ok) {
       console.log(token);
+      isLoggedInVar(true);
     }
   };
   const [loginMutation, { data: loginMutationResult, loading }] = useMutation<
@@ -73,7 +75,11 @@ export const Login = () => {
           className=" grid gap-3 mt-5 w-full mb-3"
         >
           <input
-            ref={register({ required: "Email is required" })}
+            ref={register({
+              required: "Email is required",
+              pattern:
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            })}
             name="email"
             type="email"
             required
@@ -82,6 +88,9 @@ export const Login = () => {
           ></input>
           {errors.email?.message && (
             <FormError errorMessage={errors.email?.message}></FormError>
+          )}
+          {errors.email?.type === "pattern" && (
+            <FormError errorMessage={"Please enter a valid email"}></FormError>
           )}
           <input
             ref={register({ required: "Password is required", minLength: 10 })}
