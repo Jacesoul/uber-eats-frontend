@@ -6,6 +6,7 @@ import {
   loginMutation,
   loginMutationVariables,
 } from "../__generated__/loginMutation";
+import uberLogo from "../images/uber-eats-logo.svg";
 
 const LOGIN_MUTAION = gql`
   mutation loginMutation($loginInput: LoginInput!) {
@@ -52,12 +53,15 @@ export const Login = () => {
     }
   };
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-800">
-      <div className=" bg-white w-full max-w-lg pt-8 pb-7 rounded-lg text-center">
-        <h3 className=" font-bold text-2xl text-gray-800">Log In</h3>
+    <div className="h-screen flex items-center flex-col mt-10 lg:mt-28">
+      <div className=" w-full max-w-screen-sm flex flex-col items-center px-5">
+        <img src={uberLogo} className="w-52 mb-5"></img>
+        <h4 className=" w-full font-medium text-left text-2xl mb-5">
+          Welcome back
+        </h4>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className=" grid gap-3 mt-5 px-5"
+          className=" grid gap-3 mt-5 w-full"
         >
           <input
             ref={register({ required: "Email is required" })}
@@ -84,9 +88,7 @@ export const Login = () => {
           {errors.password?.type === "minLength" && (
             <FormError errorMessage="Password must be more than 10 chars."></FormError>
           )}
-          <button className="btn mt-3">
-            {loading ? "Loading..." : "Log In"}
-          </button>
+          <button className="btn">{loading ? "Loading..." : "Log In"}</button>
           {loginMutationResult?.login.error && (
             <FormError
               errorMessage={loginMutationResult.login.error}

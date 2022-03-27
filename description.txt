@@ -19,6 +19,8 @@
 - mt : margin top | mb : margin bottom
 - tailwind의 좋은점은 일일이 css효과를 만들려면 정말 괴로운데 아름다운 class name을 통해 쉽게 할수 있도록 도와준다.
 - 일일이 CSS를 모두 작성하는 대신에 tailwind.css에 input에 대한 css를 저장하고 className에 적용해준뒤 tailwind:build해주면된다.
+- w-full : full witdh | max-w-screen-sm : maximum width는 작은 스크린 사이즈(640px)
+- 프로젝트를 할 때 항상 모바일 먼저 생각해야한다. mt-10 같이 기본 class name은 항상 모바일로 시작해야한다.
 
 ### Authentication 
 - Local-only Fields는 GraphQL 서버의 스키마에 정의되지 않은 것을 말한다. 
