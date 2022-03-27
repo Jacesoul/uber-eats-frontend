@@ -49,3 +49,4 @@
 - apollo client:codegen src/__generated__ --target=typescript --outputFlat
 - apollo codegen은 우선 나의 file을 살펴보고 내가 필요하다고 했던 모든 변수들의 interface를 제공해준다. 그 다음 백엔드의 실재 schema를 살펴본다.
 - login component가 src폴더 밖에 까지 도달하지 못하기 때문에 codegen 생성시 src폴더에 넣어주는 것이 중요하다.
+- onCompleted는 내가 다룰수있는 data를 제공해준다. 또한 loginMutation은 error, loading, called 등을 제공해준다.
