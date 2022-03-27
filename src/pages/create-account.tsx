@@ -40,7 +40,6 @@ export const CreateAccount = () => {
     const {
       createAccount: { ok },
     } = data;
-    console.log(ok);
     if (ok) {
       alert("Account created! Log in now!");
       navigate("/login", { replace: true });

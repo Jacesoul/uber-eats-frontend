@@ -21,6 +21,7 @@
 - 일일이 CSS를 모두 작성하는 대신에 tailwind.css에 input에 대한 css를 저장하고 className에 적용해준뒤 tailwind:build해주면된다.
 - w-full : full witdh | max-w-screen-sm : maximum width는 작은 스크린 사이즈(640px)
 - 프로젝트를 할 때 항상 모바일 먼저 생각해야한다. mt-10 같이 기본 class name은 항상 모바일로 시작해야한다.
+- h-screen : 100vh의 의미이다.(viewport height 스크린의 높이)
 
 ### Authentication 
 - Local-only Fields는 GraphQL 서버의 스키마에 정의되지 않은 것을 말한다. 
@@ -58,3 +59,6 @@
 - react-helmet은 document의 head를 변경할수 있게 해준다.
 - npm i react-helmet
 - npm i --save-dev @types/react-helmet
+- setContext는 모든 client가 만든 request의 context를 set한다.
+- isLoggedInVar, authTokenVar들을 reactive variable이라고 한다.
+- link는 그냥 연결할수 있는것들이다.(http, auth, web sockets 링크 등등)
