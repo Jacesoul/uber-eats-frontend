@@ -55,3 +55,6 @@
 - rimraf는 node.js를 위햔 rm -rf이다.
 - npm i rimraf
 - formState의 isValid는 onChange나 onBlur에만 일어난다.
+- react-helmet은 document의 head를 변경할수 있게 해준다.
+- npm i react-helmet
+- npm i --save-dev @types/react-helmet

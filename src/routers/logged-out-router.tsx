@@ -11,7 +11,7 @@ export const LoggedOutRouter = () => {
           path="/create-account"
           element={<CreateAccount></CreateAccount>}
         ></Route>
-        <Route path="/" element={<Login></Login>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
       </Routes>
     </Router>
   );

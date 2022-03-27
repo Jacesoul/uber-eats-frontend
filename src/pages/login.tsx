@@ -1,5 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import React from "react";
+import Helmet from "react-helmet";
 import { useForm } from "react-hook-form";
 import { FormError } from "../components/form-error";
 import {
@@ -59,6 +60,9 @@ export const Login = () => {
   };
   return (
     <div className="h-screen flex items-center flex-col mt-10 lg:mt-28">
+      <Helmet>
+        <title>Login | Uber Eats</title>
+      </Helmet>
       <div className=" w-full max-w-screen-sm flex flex-col items-center px-5">
         <img src={uberLogo} className="w-52 mb-5"></img>
         <h4 className=" w-full font-medium text-left text-2xl mb-5">
