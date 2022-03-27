@@ -30,6 +30,11 @@
 - 만약 사용하는 라이브러리에 이런 에러가 뜬다면 그 라이브러리가 typescript definition을 지원하지 않기 때문이다. 
 - switch는 오직 한 route만 임포트 할수 있게 해주는 장치이다.
 - 만약 input에 name이 없으면 useForm이 찾지 못한다.
+- React.FC의 FC는 Functional Component의 약자이다.
+- mutation PotatoMutation($email:String!, $password:String!)에서 $는 변수라는 뜻이다. 또한 이부분은 서버와 상관이 없고 오직 프런트의 Apollo를 위한것이다. Apollo는 이 변수들을 살펴볼거고 이 변수들을 가지고 mutation을 만들것이다.
+- useMutation Hook의 첫번째 Argument는 mutation function이다. 이 function은 mutation의 방아쇠 역할을 한다.
+- useMutation Hook의 두번째 Argument는 loading, error, data 객체이다. data는 mutation으로부터 되돌아 온다는 것이다. loading은 mutation이 실행되고 있다는 의미이고 error는 mutation이 error를 반환한다는 것이다.
+- npm install -g apollo && npm install apollo 
 
 ### Tailwind CSS 
 - h-screen은 스크린 크기만큼 키우는 것이다.(height screen)
