@@ -8,6 +8,7 @@ import {
   Routes,
 } from "react-router-dom";
 import { Restaurants } from "../pages/client/restaurants";
+import { Header } from "../components/headers";
 
 const ClientRoutes = () => [
   <Route path="/" element={<Restaurants></Restaurants>}></Route>,
@@ -34,6 +35,7 @@ export const LoggedInRouter = () => {
   }
   return (
     <Router>
+      <Header></Header>
       <Routes>
         {data.me.role === "Client" && ClientRoutes()}
         <Route path="*" element={<Navigate to="/" replace></Navigate>}></Route>

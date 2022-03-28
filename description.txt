@@ -1,5 +1,4 @@
 ### Frontend Setup
-- Tailwind CSS는 utility-first 프레임워크이다. 기본적으로 Tailwind는 엄청 긴 CSS 파일이라는 뜻이다.
 - npm install -D tailwindcss
 - extension에서 Tailwind CSS IntelliSense 설치(클래스이름 자동완성 기능)
 - postcss는 CSS를 post process 할수 있게 해주는 라이브러리이다.
@@ -12,6 +11,7 @@
 - "--isolatedModules"에러가 나오면 재실행하기 
 
 ### Tailwind CSS 
+- Tailwind CSS는 utility-first 프레임워크이다. 기본적으로 Tailwind는 엄청 긴 CSS 파일이라는 뜻이다.
 - h-screen은 스크린 크기만큼 키우는 것이다.(height screen)
 - bg => background color
 - w : width | px : padding horizontal | py : padding vertical
@@ -22,6 +22,13 @@
 - w-full : full witdh | max-w-screen-sm : maximum width는 작은 스크린 사이즈(640px)
 - 프로젝트를 할 때 항상 모바일 먼저 생각해야한다. mt-10 같이 기본 class name은 항상 모바일로 시작해야한다.
 - h-screen : 100vh의 의미이다.(viewport height 스크린의 높이)
+- tailwind에서 사이즈를 정하는 방법은 %를 사용하거나 rem(사이즈 단위)을 사용한다.
+- content에는 padding이 있다. 처음은 일단 padding을 봐야한다. 이렇게 하면 responsive design을 쉽게 할수 있다.
+- em은 document의 font 사이즈이다. 만약 document가 16px이고 margin top을 1em으로 설정해주면 1em은 16px이라는 뜻이다.
+- em은 element의 폰트 크기에 좌우된다. div가 있고 fontSize가 50px인 경우 margin Top이 1em이라고 했을때 사이즈는 50px일것이다. 
+- tailwind css가 padding과 size를 이용하는 방법은 rem(root em)이다. 
+- 이 뜻은 div가 있어도 margin top이 2rem일지라도 100px이 되지 않는다. rem은 body의 폰트 크기가 된다. body의 fontSize가 5px이라면 div의 margin top 2rem은 10px이 된다.   
+
 
 ### Authentication 
 - Local-only Fields는 GraphQL 서버의 스키마에 정의되지 않은 것을 말한다. 
@@ -62,3 +69,4 @@
 - setContext는 모든 client가 만든 request의 context를 set한다.
 - isLoggedInVar, authTokenVar들을 reactive variable이라고 한다.
 - link는 그냥 연결할수 있는것들이다.(http, auth, web sockets 링크 등등)
+- 링크를 사용하고 싶다면 Header를 Router안에 놓아야한다. 
