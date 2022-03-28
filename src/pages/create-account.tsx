@@ -42,7 +42,7 @@ export const CreateAccount = () => {
     } = data;
     if (ok) {
       alert("Account created! Log in now!");
-      navigate("/login", { replace: true });
+      navigate("/", { replace: true });
     }
   };
   const [
@@ -134,7 +134,7 @@ export const CreateAccount = () => {
         </form>
         <div>
           Already have an account?{" "}
-          <Link to="/login" className=" text-emerald-600 hover:underline">
+          <Link to="/" className=" text-emerald-600 hover:underline">
             Log in now
           </Link>
         </div>
