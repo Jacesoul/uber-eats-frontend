@@ -28,6 +28,7 @@
 - em은 element의 폰트 크기에 좌우된다. div가 있고 fontSize가 50px인 경우 margin Top이 1em이라고 했을때 사이즈는 50px일것이다. 
 - tailwind css가 padding과 size를 이용하는 방법은 rem(root em)이다. 
 - 이 뜻은 div가 있어도 margin top이 2rem일지라도 100px이 되지 않는다. rem은 body의 폰트 크기가 된다. body의 fontSize가 5px이라면 div의 margin top 2rem은 10px이 된다.   
+- md: 또는 xl:이 명시되어 있지 않은 사이즈는 모바일을 우선으로 적용이 된다. tailwind는 모바일 우선 프레임워크이기 때문이다. 그 다음에 데스크탑을 설정해준다.
 
 
 ### Authentication 
@@ -70,3 +71,8 @@
 - isLoggedInVar, authTokenVar들을 reactive variable이라고 한다.
 - link는 그냥 연결할수 있는것들이다.(http, auth, web sockets 링크 등등)
 - 링크를 사용하고 싶다면 Header를 Router안에 놓아야한다. 
+- React를 위한 fontawesome 설치 
+- npm i --save @fortawesome/fontawesome-svg-core
+- npm i --save @fortawesome/free-solid-svg-icons
+- npm i --save @fortawesome/react-fontawesome
+- useMe() 훅이 한번 호출되면 apollo가 자동으로 캐시에 넣어놓아서 다시 호출해도 바로 사용할수 있다.
