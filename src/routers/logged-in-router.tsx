@@ -12,8 +12,12 @@ import { NotFound } from "../pages/404";
 import { ConFirmEmail } from "../pages/user/confirm-email";
 
 const ClientRoutes = () => [
-  <Route path="/" element={<Restaurants></Restaurants>}></Route>,
-  <Route path="/confirm" element={<ConFirmEmail></ConFirmEmail>}></Route>,
+  <Route key={1} path="/" element={<Restaurants></Restaurants>}></Route>,
+  <Route
+    key={2}
+    path="/confirm"
+    element={<ConFirmEmail></ConFirmEmail>}
+  ></Route>,
 ];
 
 export const LoggedInRouter = () => {
