@@ -10,14 +10,12 @@ import { Header } from "../components/headers";
 import { useMe } from "../hooks/useMe";
 import { NotFound } from "../pages/404";
 import { ConFirmEmail } from "../pages/user/confirm-email";
+import { EditProfile } from "../pages/user/edit-profile";
 
 const ClientRoutes = () => [
-  <Route key={1} path="/" element={<Restaurants></Restaurants>}></Route>,
-  <Route
-    key={2}
-    path="/confirm"
-    element={<ConFirmEmail></ConFirmEmail>}
-  ></Route>,
+  <Route key={1} path="/" element={<Restaurants />}></Route>,
+  <Route key={2} path="/confirm" element={<ConFirmEmail />}></Route>,
+  <Route key={3} path="/edit-profile" element={<EditProfile />}></Route>,
 ];
 
 export const LoggedInRouter = () => {

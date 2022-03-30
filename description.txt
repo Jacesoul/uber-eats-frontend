@@ -81,3 +81,4 @@
 - ClientRoutes는 Array이기 때문에 key가 필요하다.
 - writeFragment에서 Fragment는 type의 일부분이다.
 - Apollo가 type에 id속성이 있으면, model의 id로 사용한다.
+- https://www.apollographql.com/docs/react/caching/cache-interaction/#writefragment

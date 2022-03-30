@@ -20,9 +20,11 @@ export const Header: React.FC<IHeaderProps> = ({ email }) => {
       )}
       <header className=" py-1">
         <div className=" w-full px-5 xl:px-0 max-w-screen-xl mx-auto flex justify-between items-center">
-          <img src={uberLogo} className="w-24" alt="Uber Eats"></img>
+          <Link to="/">
+            <img src={uberLogo} className="w-24" alt="Uber Eats"></img>
+          </Link>
           <span className=" text-xs">
-            <Link to="/my-profile">
+            <Link to="/edit-profile">
               <FontAwesomeIcon icon={faUser} className=" text-xl" />
             </Link>
           </span>
