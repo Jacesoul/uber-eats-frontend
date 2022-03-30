@@ -30,6 +30,7 @@
 - 이 뜻은 div가 있어도 margin top이 2rem일지라도 100px이 되지 않는다. rem은 body의 폰트 크기가 된다. body의 fontSize가 5px이라면 div의 margin top 2rem은 10px이 된다.   
 - md: 또는 xl:이 명시되어 있지 않은 사이즈는 모바일을 우선으로 적용이 된다. tailwind는 모바일 우선 프레임워크이기 때문이다. 그 다음에 데스크탑을 설정해준다.
 - w-3/12는 퍼센트를 의미한다. (부모에 대한 퍼센트)
+- group-hover는 group class가 hover이면 작동한다.(group claa와 group-hover는 같이 사용해야한다.)
 
 
 ### Authentication 

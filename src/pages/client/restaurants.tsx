@@ -51,7 +51,7 @@ export const Restaurants = () => {
   console.log(data);
   return (
     <div>
-      <form className=" bg-gray-800 w-full py-40 flex justify-center items-center">
+      <form className=" bg-gray-800 w-full py-24 flex justify-center items-center">
         <input
           type="Search"
           placeholder="Search Restaurants..."
@@ -59,21 +59,38 @@ export const Restaurants = () => {
         />
       </form>
       {!loading && (
-        <div className=" max-w-screen-2xl mx-auto mt-8">
-          <div className=" flex justify-around max-w-sm mx-auto">
-            {data?.allCategories.categories?.map((category) => (
-              <div className=" flex flex-col items-center cursor-pointer">
+        <div className=" max-w-screen-xl mx-auto mt-8">
+          <div className=" flex justify-around max-w-md mx-auto">
+            {data?.allCategories.categories?.map((category, index) => (
+              <div
+                key={index}
+                className=" flex flex-col items-center cursor-pointer group"
+              >
                 <div
-                  className=" w-14 h-14 bg-cover hover:bg-gray-100 rounded-full "
+                  className=" w-14 h-14 bg-cover group-hover:bg-gray-100 rounded-full "
                   style={{
                     backgroundImage: `url(${category.coverImg})`,
-                    backgroundSize: "48px 48px",
+                    backgroundSize: "40px 40px",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                   }}
                 ></div>
                 <span className=" text-sm text-center font-medium mt-2">
                   {category.name}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className=" grid grid-cols-3 gap-x-5 gap-y-10 mt-10">
+            {data?.restaurants.results?.map((restaurant) => (
+              <div>
+                <div
+                  className=" py-24 bg-cover bg-center mb-2"
+                  style={{ backgroundImage: `url(${restaurant.coverImg})` }}
+                ></div>
+                <h3 className=" text-sm font-medium">{restaurant.name}</h3>
+                <span className=" border-t-2 border-gray-400">
+                  {restaurant.category?.name}
                 </span>
               </div>
             ))}
