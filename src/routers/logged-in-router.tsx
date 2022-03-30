@@ -11,11 +11,13 @@ import { useMe } from "../hooks/useMe";
 import { NotFound } from "../pages/404";
 import { ConFirmEmail } from "../pages/user/confirm-email";
 import { EditProfile } from "../pages/user/edit-profile";
+import { Search } from "../pages/client/search";
 
 const ClientRoutes = () => [
   <Route key={1} path="/" element={<Restaurants />}></Route>,
   <Route key={2} path="/confirm" element={<ConFirmEmail />}></Route>,
   <Route key={3} path="/edit-profile" element={<EditProfile />}></Route>,
+  <Route key={4} path="/search" element={<Search />}></Route>,
 ];
 
 export const LoggedInRouter = () => {

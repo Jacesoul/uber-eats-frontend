@@ -1,5 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Restaurant } from "../../components/restaurant";
 import {
   restaurantsPageQuery,
@@ -38,6 +40,10 @@ const RESTAURANTS_QUERY = gql`
   }
 `;
 
+interface IFormProps {
+  searchTerm: string;
+}
+
 export const Restaurants = () => {
   const [page, setPage] = useState(1);
   const { data, loading } = useQuery<
@@ -52,22 +58,32 @@ export const Restaurants = () => {
   });
   const onNextPageClick = () => setPage((current) => current + 1);
   const onPrevPageClick = () => setPage((current) => current - 1);
-
+  const { register, handleSubmit, getValues } = useForm<IFormProps>();
+  const navigate = useNavigate();
+  const onSearchSubmit = () => {
+    const { searchTerm } = getValues();
+    navigate("/search", { state: { searchTerm } });
+  };
   return (
     <div>
-      <form className=" bg-gray-800 w-full py-24 flex justify-center items-center">
+      <form
+        onSubmit={handleSubmit(onSearchSubmit)}
+        className=" bg-gray-800 w-full py-20 flex justify-center items-center"
+      >
         <input
+          ref={register({ required: true, min: 3 })}
+          name="searchTerm"
           type="Search"
           placeholder="Search Restaurants..."
-          className="input w-4/12 rounded-md border-0"
+          className="input w-3/4 sm:w-5/12 rounded-md border-0"
         />
       </form>
       {!loading && (
         <div className=" max-w-screen-xl mx-auto mt-8 pb-20">
           <div className=" flex justify-around max-w-md mx-auto">
-            {data?.allCategories.categories?.map((category, index) => (
+            {data?.allCategories.categories?.map((category) => (
               <div
-                key={index}
+                key={category.id}
                 className=" flex flex-col items-center cursor-pointer group"
               >
                 <div
@@ -85,13 +101,14 @@ export const Restaurants = () => {
               </div>
             ))}
           </div>
-          <div className=" grid grid-cols-3 gap-x-5 gap-y-10 mt-10">
+          <div className=" grid sm:grid-cols-3 gap-x-5 gap-y-10 mt-10">
             {data?.restaurants.results?.map((restaurant) => (
               <Restaurant
                 id={restaurant.id}
                 coverImg={restaurant.coverImg}
                 name={restaurant.name}
                 categoryName={restaurant.category?.name}
+                key={restaurant.id}
               ></Restaurant>
             ))}
           </div>

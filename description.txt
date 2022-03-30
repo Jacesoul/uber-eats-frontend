@@ -87,4 +87,6 @@
 - useQuery는 refetch라는 흥미로운 속성이 있다. refetch는 function인데 이걸 call 하면 query를 다시 fetch해준다.
 - refetch는 다시 API를 call하는것이기 때문에 fragment를 사용하는게 훨씬 빠르다.
 - 코딩에 시간을 사용하는 만큼 코드를 정리하는데 시간을 사용하자. 처음부터 깔끔한 코드를 작성하려고 하지 않기. 못생긴 코드를 작성해보고 작동하면 정리하기.
-- 
+- URL에 있는 데이터를 사용자에게 표시하고 싶지 않은 경우에는 state를 사용할수 있다. Route의 state가 브라우저 메모리에 저장되기 때문에 새로고침해도 state를 불러올수 있다.
+- navigate("/search", { state: { searchTerm } });
+- navigate({ pathname: "/search", search: `?term=${searchTerm}` });
