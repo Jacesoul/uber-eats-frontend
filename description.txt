@@ -90,3 +90,6 @@
 - URL에 있는 데이터를 사용자에게 표시하고 싶지 않은 경우에는 state를 사용할수 있다. Route의 state가 브라우저 메모리에 저장되기 때문에 새로고침해도 state를 불러올수 있다.
 - navigate("/search", { state: { searchTerm } });
 - navigate({ pathname: "/search", search: `?term=${searchTerm}` });
+- navigate의 replace : true는 이전페이지의 기록이 없고 false는 새 페이지를 push하고 이전 페이지를 기록에 남긴다.
+- Lazy Query는 즉시 실행되지 않는 Query이다. 즉시 실행하지 않고 원하는 경우에만 실행한다.
+- useLazyQuery에서 Array의 첫 element는 호출 준비가 된 Query이다.

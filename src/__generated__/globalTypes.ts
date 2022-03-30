@@ -33,6 +33,11 @@ export interface RestaurantsInput {
   page?: number | null;
 }
 
+export interface SerachRestaurantInput {
+  page?: number | null;
+  query: string;
+}
+
 export interface VerifyEmailInput {
   code: string;
 }
