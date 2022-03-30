@@ -2,9 +2,11 @@ import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Category } from "../../components/category";
 import { Restaurant } from "../../components/restaurant";
-import { RESTAURANT_FRAGMENT } from "../../fragments";
+import { CATEGORY_FRAGMENT, RESTAURANT_FRAGMENT } from "../../fragments";
 import {
   restaurantsPageQuery,
   restaurantsPageQueryVariables,
@@ -16,11 +18,7 @@ const RESTAURANTS_QUERY = gql`
       ok
       error
       categories {
-        id
-        name
-        coverImg
-        slug
-        restaurantCount
+        ...CategoryParts
       }
     }
     restaurants(input: $input) {
@@ -34,6 +32,7 @@ const RESTAURANTS_QUERY = gql`
     }
   }
   ${RESTAURANT_FRAGMENT}
+  ${CATEGORY_FRAGMENT}
 `;
 
 interface IFormProps {
@@ -81,23 +80,12 @@ export const Restaurants = () => {
         <div className=" max-w-screen-xl mx-auto mt-8 pb-20">
           <div className=" flex justify-around max-w-md mx-auto">
             {data?.allCategories.categories?.map((category) => (
-              <div
-                key={category.id}
-                className=" flex flex-col items-center cursor-pointer group"
-              >
-                <div
-                  className=" w-14 h-14 bg-cover group-hover:bg-gray-100 rounded-full "
-                  style={{
-                    backgroundImage: `url(${category.coverImg})`,
-                    backgroundSize: "40px 40px",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                  }}
-                ></div>
-                <span className=" text-sm text-center font-medium mt-2">
-                  {category.name}
-                </span>
-              </div>
+              <Link to={`/category/${category.slug}`} key={category.id}>
+                <Category
+                  coverImg={category.coverImg}
+                  name={category.name}
+                ></Category>
+              </Link>
             ))}
           </div>
           <div className=" grid sm:grid-cols-3 gap-x-5 gap-y-10 mt-10">
