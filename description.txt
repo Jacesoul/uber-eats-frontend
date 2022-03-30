@@ -86,3 +86,5 @@
 - https://www.apollographql.com/docs/react/caching/cache-interaction/#writefragment
 - useQuery는 refetch라는 흥미로운 속성이 있다. refetch는 function인데 이걸 call 하면 query를 다시 fetch해준다.
 - refetch는 다시 API를 call하는것이기 때문에 fragment를 사용하는게 훨씬 빠르다.
+- 코딩에 시간을 사용하는 만큼 코드를 정리하는데 시간을 사용하자. 처음부터 깔끔한 코드를 작성하려고 하지 않기. 못생긴 코드를 작성해보고 작동하면 정리하기.
+- 
