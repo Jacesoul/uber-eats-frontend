@@ -1,5 +1,6 @@
 import { gql, useApolloClient, useMutation } from "@apollo/client";
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMe } from "../../hooks/useMe";
 import {
   verifyEmail,
@@ -18,6 +19,7 @@ const VERIFY_EMAIL_MUTATION = gql`
 export const ConFirmEmail = () => {
   const { data: userData } = useMe();
   const client = useApolloClient();
+  const navigate = useNavigate();
   const onCompleted = (data: verifyEmail) => {
     const {
       verifyEmail: { ok },
@@ -34,6 +36,7 @@ export const ConFirmEmail = () => {
           verified: true,
         },
       });
+      navigate("/", { replace: true });
     }
   };
   const [verifyEmail] = useMutation<verifyEmail, verifyEmailVariables>(
