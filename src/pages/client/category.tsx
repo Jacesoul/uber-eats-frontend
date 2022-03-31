@@ -28,14 +28,14 @@ type ICategoryParams = {
 };
 
 export const Category = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams<ICategoryParams>();
   const { data, loading } = useQuery<category, categoryVariables>(
     CATEGORY_QUERY,
     {
       variables: {
         input: {
           page: 1,
-          slug: slug + "",
+          slug: params.slug + "",
         },
       },
     }

@@ -94,3 +94,7 @@
 - Lazy Query는 즉시 실행되지 않는 Query이다. 즉시 실행하지 않고 원하는 경우에만 실행한다.
 - useLazyQuery에서 Array의 첫 element는 호출 준비가 된 Query이다.
 - useLocation은 유저가 어디에 있는지 알려주고 useNavigate는 어디론가 보내준다.
+- react-router-dom에서 중요한 훅 3개는 useNavigate, useLocation, useParams이다.
+- useLocation은 우리가 어디에 있는지 URL을 알게 해준다.
+- useNavigate는 이곳저곳을 돌아다닐수 있게 change, replace, push를 할수 있다.
+- useParams는 우리에게 parameter를 준다.
