@@ -107,3 +107,11 @@
 - package.json에서 collectCoverageFrom를 설정해주면 coverage를 확인하려는 파일들을 나타낸다. 
 - App.tsx도 함께 테스트 해주기 위해서 components파일에 넣어주기 
 - code 자체를 테스트하는게 아니고 user의 관점에서 components를 테스트한다. 
+- it의 의미는 individual test이다.
+- react-dom에서 import하는 render가 있는데 test에서 import하면 안되고, render를 import 할곳은 @testing-library/react이다.
+- render function에는 테스트하고 싶은 실제 component를 주 면 된다.
+- render function을 call 하고 나면 정말 많은 것들을 쓸수 있게 해준다.
+- app.tsx를 테스트할때 신경써야할것은 isLoggedIn이 true일때 또는 false일때 보여줘야 할것을 잘보여주는지이다.(즉 component가 있는지만 알고 싶은것이다. component의 내용, login page, graphql 등등은 신경쓰지 않는다.)
+- render를 call 하면 많은 function을 사용할수 있는데 그중 debug는 테스트를 하는 관점에서 app이 어떻게 rendering하는지 보여준다.
+- act는 유저가 한 행동이라고 생각하면된다.
+- waitFor는 state가 refresh하고 쓸수 있도록 기다려 주는것이다.
