@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 interface IRestaurantProps {
-  id: number;
+  id: string;
   coverImg: string;
   name: string;
   categoryName?: string;
