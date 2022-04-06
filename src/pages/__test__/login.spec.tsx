@@ -72,11 +72,12 @@ describe("<Login />", () => {
         login: {
           ok: true,
           token: "xxx",
-          error: null,
+          error: "mutation-error",
         },
       },
     });
     mockClient.setRequestHandler(LOGIN_MUTAION, mockedMutationResponse);
+    jest.spyOn(Storage.prototype, "setItem");
     await waitFor(() => {
       userEvent.type(email, formData.email);
       userEvent.type(password, formData.password);
@@ -86,5 +87,8 @@ describe("<Login />", () => {
     expect(mockedMutationResponse).toHaveBeenCalledWith({
       loginInput: { email: formData.email, password: formData.password },
     });
+    const errorMessage = getByRole("alert");
+    expect(errorMessage).toHaveTextContent(/mutation-error/i);
+    expect(localStorage.setItem).toHaveBeenCalledWith("uber-token", "xxx");
   });
 });
