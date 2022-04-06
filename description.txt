@@ -124,3 +124,8 @@
 - MockedProvider는 mocks라는 prop을 받는데 mocks는 query, mutation, result를 mock할수있게 해준다.
 - 테스트시 뭔가가 존재하지 않는다는걸 확인하고 싶다면 query를 사용하면 된다. query는 실패하지 않고 null을 return한다.
 - getBy는 element를 찾지 못하면 테스트에 실패하지만 queryBy는 뭔가가 존재하지 않으면 null값을 반환한다.
+- MockedProvider를 사용하면 mutation result를 테스트 할수 있지만 variables는 테스트 할수 없다.
+- npm i mock-apollo-client   
+- mock-apollo-client를 사용하면 mutation의 variables를 테스트 할수 있다.
+- waitFor()은 state가 바뀌는것을 기다려주게 한다.
+- 테스트가 많을 경우 beforeEach를 사용해서 코드를 간결화하자
