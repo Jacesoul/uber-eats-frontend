@@ -12,7 +12,7 @@ import {
   createAccountMutation,
 } from "../__generated__/createAccountMutation";
 
-const CREATE_ACCOUNT_MUTAION = gql`
+export const CREATE_ACCOUNT_MUTAION = gql`
   mutation createAccountMutation($createAccountInput: CreateAccountInput!) {
     createAccount(input: $createAccountInput) {
       ok

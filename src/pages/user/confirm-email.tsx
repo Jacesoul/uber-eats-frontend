@@ -25,7 +25,6 @@ export const ConFirmEmail = () => {
     const {
       verifyEmail: { ok },
     } = data;
-    console.log(ok);
     if (ok && userData?.me.id) {
       await refetch();
       navigate("/", { replace: true });
