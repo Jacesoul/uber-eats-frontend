@@ -18,7 +18,7 @@ describe("Log In", () => {
     user.findByRole("alert").should("have.text", "Password is required");
   });
 
-  it("can fill out the form", () => {
+  it("can fill out the form and login", () => {
     user.visit("/");
     user.findByPlaceholderText(/email/i).type("jace123@naver.com");
     user.findByPlaceholderText(/password/i).type("1q2w3e4r5t");
@@ -27,9 +27,5 @@ describe("Log In", () => {
       .should("not.have.class", "pointer-events-none")
       .click();
     user.window().its("localStorage.uber-token").should("be.a", "string");
-  });
-
-  it("sign up", () => {
-    user.visit("/create-accout");
   });
 });
