@@ -1,3 +1,7 @@
+### TODO
+- create category page 
+- complete unit testing
+
 ### Frontend Setup
 - npm install -D tailwindcss
 - extension에서 Tailwind CSS IntelliSense 설치(클래스이름 자동완성 기능)
@@ -132,3 +136,10 @@
 - query를 확인하고 싶을때는 일반적인 Apollo 테스팅을 사용하고 mutation을 확인하고 싶을때는 mock-apollo-client을 사용한다.
 - jest.requireActual()은 실제 모듈을 require 한다.
 - jest.clearAllMocks()을 통해 바꾼부분이 있다면 다시 돌려놓는다.
+
+### E2E REACT TESTING
+- Cypress는 Mac, Windows, Linux에서 end-to-end테스트 할수 있게 해준다.
+- npm install cypress
+- npx cypress open
+- cypress안의 typescript구성은 react application의 typescript와 구성이 다르기 때문에 cypress안에 tsconfig.ts파일을 생성한다.
+- cypress에서는 jest를 사용하지 않고 mocha를 사용한다.
