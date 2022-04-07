@@ -143,3 +143,6 @@
 - npx cypress open
 - cypress안의 typescript구성은 react application의 typescript와 구성이 다르기 때문에 cypress안에 tsconfig.ts파일을 생성한다.
 - cypress에서는 jest를 사용하지 않고 mocha를 사용한다.
+- npm install --save-dev @testing-library/cypress
+- Cypress Testing Library를 사용해서 react testing Library에서 사용했던 element을 가질수 있다.(get을 사용하는대신 findBy를 사용할수 있다.)
+- 
