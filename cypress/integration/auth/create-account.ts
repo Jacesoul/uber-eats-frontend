@@ -37,11 +37,7 @@ describe("Create Account", () => {
     user.findByPlaceholderText(/password/i).type("1q2w3e4r5t");
     user.findByRole("button").click();
     user.wait(1000);
-    user.title().should("eq", "Login | Uber Eats");
-    user.findByPlaceholderText(/email/i).type("jace123@naver.com");
-    user.findByPlaceholderText(/password/i).type("1q2w3e4r5t");
-    user.findByRole("button").click();
     // @ts-ignore
-    user.assertLoggedIn();
+    user.login("jace123@naver.com", "1q2w3e4r5t");
   });
 });

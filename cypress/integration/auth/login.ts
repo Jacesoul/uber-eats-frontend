@@ -19,13 +19,7 @@ describe("Log In", () => {
   });
 
   it("can fill out the form and login", () => {
-    user.visit("/");
-    user.findByPlaceholderText(/email/i).type("jace123@naver.com");
-    user.findByPlaceholderText(/password/i).type("1q2w3e4r5t");
-    user
-      .findByRole("button")
-      .should("not.have.class", "pointer-events-none")
-      .click();
-    user.window().its("localStorage.uber-token").should("be.a", "string");
+    // @ts-ignore
+    user.login("jace123@naver.com", "1q2w3e4r5t");
   });
 });
