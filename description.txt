@@ -147,3 +147,4 @@
 - Cypress Testing Library를 사용해서 react testing Library에서 사용했던 element을 가질수 있다.(get을 사용하는대신 findBy를 사용할수 있다.)
 - cypress.intercept()를 통해서 request를 가로챌수있다.
 - intercept가 작동하는 원리는 어떤 HTTP request에 대한 stub(mock), 또는 spy하는 것을 허용하는 것이다. 이것을 통해서 http request의 body, headers 그리고 URL을 변경 할수 있다.
+- 매번 반복하는 확인 작업같은 것들을 command로 만들수 있다.

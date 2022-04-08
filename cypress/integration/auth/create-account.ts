@@ -41,6 +41,7 @@ describe("Create Account", () => {
     user.findByPlaceholderText(/email/i).type("jace123@naver.com");
     user.findByPlaceholderText(/password/i).type("1q2w3e4r5t");
     user.findByRole("button").click();
-    user.window().its("localStorage.uber-token").should("be.a", "string");
+    // @ts-ignore
+    user.assertLoggedIn();
   });
 });
