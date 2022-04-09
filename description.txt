@@ -148,3 +148,4 @@
 - cypress.intercept()를 통해서 request를 가로챌수있다.
 - intercept가 작동하는 원리는 어떤 HTTP request에 대한 stub(mock), 또는 spy하는 것을 허용하는 것이다. 이것을 통해서 http request의 body, headers 그리고 URL을 변경 할수 있다.
 - 매번 반복하는 확인 작업같은 것들을 command로 만들수 있다.
+- request를 보내거나 response를 받기 위해서 fixture를 만들어서 사용할수 있다.(import를 할 필요없이 올바른 경로만 적어주면 된다.)
