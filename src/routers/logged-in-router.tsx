@@ -10,6 +10,7 @@ import { Search } from "../pages/client/search";
 import { Category } from "../pages/client/category";
 import { Restaurant } from "../pages/client/restaurant";
 import { MyRestaurants } from "../pages/owner/my-restaurants";
+import { AddRestaurant } from "../pages/owner/add-restaurants";
 
 const clientRoutes = [
   { path: "/", component: <Restaurants /> },
@@ -23,7 +24,10 @@ const commonRoutes = [
   { path: "/edit-profile", component: <EditProfile /> },
 ];
 
-const restaurantRoutes = [{ path: "/", component: <MyRestaurants /> }];
+const restaurantRoutes = [
+  { path: "/", component: <MyRestaurants /> },
+  { path: "/add-restaurant", component: <AddRestaurant /> },
+];
 
 export const LoggedInRouter = () => {
   const { data, loading, error } = useMe();
