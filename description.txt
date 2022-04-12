@@ -150,3 +150,5 @@
 - 매번 반복하는 확인 작업같은 것들을 command로 만들수 있다.
 - request를 보내거나 response를 받기 위해서 fixture를 만들어서 사용할수 있다.(import를 할 필요없이 올바른 경로만 적어주면 된다.)
 - FormData 인터페이스는 form 필드와 그 값을 나타내는 일련의 key/value 쌍을 쉽게 생성할 수 있는 방법을 제공합니다. 인코딩 타입이 "multipart/form-data"로 설정된 경우, form에서 사용하는 것과 동일한 포맷을 사용해야 합니다.
+- refetch query는 말그대로 query를 다시 fetch 해주는 기능이다.
+- refetch 작업은 mutation 작업이 성공적으로 끝나면 자동으로 일어난다. 
