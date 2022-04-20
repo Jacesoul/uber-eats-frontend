@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { RESTAURANT_FRAGMENT } from "../../fragments";
+import { DISH_FRAGMENT, RESTAURANT_FRAGMENT } from "../../fragments";
 import {
   myRestaurant,
   myRestaurantVariables,
@@ -14,10 +14,14 @@ const MY_RESTAURANT_QUERY = gql`
       error
       restaurant {
         ...RestaurantParts
+        menu {
+          ...DishParts
+        }
       }
     }
   }
   ${RESTAURANT_FRAGMENT}
+  ${DISH_FRAGMENT}
 `;
 
 type IParams = {
@@ -36,6 +40,7 @@ export const MyRestaurant = () => {
       },
     }
   );
+  console.log(data);
   return (
     <div>
       <div
@@ -54,6 +59,11 @@ export const MyRestaurant = () => {
         <Link to={``} className=" text-white bg-lime-700 py-3 px-10">
           Buy Promotion &rarr;
         </Link>
+        <div className=" mt-10">
+          {data?.myRestaurant.restaurant?.menu.length === 0 ? (
+            <h4 className=" text-xl mb-5">Please upload a dish.</h4>
+          ) : null}
+        </div>
       </div>
     </div>
   );
