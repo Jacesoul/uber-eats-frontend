@@ -153,3 +153,6 @@
 - refetch query는 말그대로 query를 다시 fetch 해주는 기능이다.
 - refetch 작업은 mutation 작업이 성공적으로 끝나면 자동으로 일어난다. 
 - readQuery는 cache의 현재 state를 읽고 있는것이다.
+
+### OWNER DASHBOARD
+- useForm 훅의 mode: "onChange"는 특정 input의 값이 변경될 때마다 실시간으로 form에서 validate를 해준다. 
