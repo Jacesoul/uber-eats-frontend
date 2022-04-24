@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMe } from "../hooks/useMe";
 import uberLogo from "../images/uber-eats-logo.svg";
+import rightArrow from "../images/right-arrow-bracket.svg";
 
 interface IHeaderProps {
   email: string;
@@ -11,6 +12,10 @@ interface IHeaderProps {
 
 export const Header: React.FC<IHeaderProps> = ({ email }) => {
   const { data } = useMe();
+  const onLogOutClick = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <>
       {!data?.me.verified && (
@@ -23,11 +28,20 @@ export const Header: React.FC<IHeaderProps> = ({ email }) => {
           <Link to="/">
             <img src={uberLogo} className="w-24" alt="Uber Eats"></img>
           </Link>
-          <span className=" text-xs">
-            <Link to="/edit-profile">
-              <FontAwesomeIcon icon={faUser} className=" text-xl" />
-            </Link>
-          </span>
+          <div className=" flex justify-center items-center">
+            <span className=" text-xs">
+              <Link to="/edit-profile">
+                <FontAwesomeIcon icon={faUser} className=" text-xl" />
+              </Link>
+            </span>
+            <span onClick={onLogOutClick}>
+              <img
+                src={rightArrow}
+                alt="Log Out"
+                className=" ml-5 w-6 cursor-pointer"
+              />
+            </span>
+          </div>
         </div>
       </header>
     </>
