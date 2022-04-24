@@ -43,22 +43,35 @@ export const AddDish = () => {
       },
     ],
   });
-  const { register, getValues, formState, handleSubmit } = useForm<IForm>({
-    mode: "onChange",
-  });
-  const onSubmit = () => {
-    const { name, price, description } = getValues();
-    createDishMutation({
-      variables: {
-        input: {
-          name,
-          price: +price,
-          description,
-          restaurantId: Number(restaurantId),
-        },
-      },
+  const { register, getValues, formState, handleSubmit, setValue } =
+    useForm<IForm>({
+      mode: "onChange",
     });
-    navigate(-1);
+  const onSubmit = () => {
+    const { name, price, description, ...rest } = getValues();
+    console.log(rest);
+    // createDishMutation({
+    //   variables: {
+    //     input: {
+    //       name,
+    //       price: +price,
+    //       description,
+    //       restaurantId: Number(restaurantId),
+    //     },
+    //   },
+    // });
+    // navigate(-1);
+  };
+  const [optionNumber, setOptionsNumber] = useState(0);
+  const onAddOptionClick = () => {
+    setOptionsNumber((current) => current + 1);
+  };
+  const onDeleteClick = (idToDelete: number) => {
+    setOptionsNumber((current) => current - 1);
+    // @ts-ignore
+    setValue(`${idToDelete}-optionName`, "");
+    // @ts-ignore
+    setValue(`${idToDelete}-optionExtra`, "");
   };
   return (
     <div className="container flex flex-col justify-center items-center">
@@ -92,6 +105,36 @@ export const AddDish = () => {
           placeholder="Description"
           ref={register({ required: "Description is required." })}
         />
+        <div className="my-10">
+          <h4 className=" font-medium mb-3 text-lg">Dish Options</h4>
+          <span
+            onClick={onAddOptionClick}
+            className=" cursor-pointer text-white bg-gray-900 py-1 px-2 "
+          >
+            Add Dish Option
+          </span>
+          {optionNumber !== 0 &&
+            Array.from(new Array(optionNumber)).map((_, index) => (
+              <div key={index} className=" mt-5">
+                <input
+                  ref={register}
+                  name={`${index}-optionName`}
+                  className=" py-2 px-4 focus:outline-none focus:border-gray-600 border-2 mr-3"
+                  type="text"
+                  placeholder="Option Name"
+                />
+                <input
+                  ref={register}
+                  name={`${index}-optionExtra`}
+                  className=" py-2 px-4 focus:outline-none focus:border-gray-600 border-2 "
+                  type="number"
+                  min={0}
+                  placeholder="Option Extra Price"
+                />
+                <span onClick={() => onDeleteClick(index)}>Delete Option</span>
+              </div>
+            ))}
+        </div>
         <Button
           loading={loading}
           canClick={formState.isValid}

@@ -156,3 +156,4 @@
 
 ### OWNER DASHBOARD
 - useForm 훅의 mode: "onChange"는 특정 input의 값이 변경될 때마다 실시간으로 form에서 validate를 해준다. 
+- useForm에서 setValue는 기본적으로 form안에서 원하는 값을 설정할수 있게 해준다.
