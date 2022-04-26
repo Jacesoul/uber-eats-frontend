@@ -160,3 +160,8 @@
 - Victory는 멋진 그래프들을 만들수 있게 해주는 react component들이 들어있는 라이브러리이다.
 - VictoryLine에서 datum은 label을 어떤 방식으로 그릴지와 관련이 있다.
 - dy는 수직방향으로 점으로부터 얼마나 떨어져 있는지를 나타낸다. 
+
+### PAYMENTS
+- paddle은 소프트웨어 서비스 제품을 팔수 있는 멋진 곳이다.
+- subscription plan은 누구를 월 단위로 돈을 지불하게 만들고 싶을 때 쓰는거다. 
+- Server Notification은 user가 다운로드 하지 않아도 paddle이 알아서 우리 서버에 내용을 적용시켜준다. 즉 누가 product를 구입하면 paddle이 서버에 내용을 적용시켜준다.
