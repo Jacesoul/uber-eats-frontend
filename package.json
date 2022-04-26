@@ -15,7 +15,6 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-router-dom": "^5.3.3",
-    "apollo": "^2.33.10",
     "cypress": "^9.5.3",
     "graphql": "^16.3.0",
     "mock-apollo-client": "^1.2.0",
@@ -35,7 +34,7 @@
   "scripts": {
     "tailwind:build": "tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css",
     "start": "npm run tailwind:build & react-scripts start",
-    "apollo:codegen": "rimraf src/__generated__ apollo client:codegen src/__generated__ --target=typescript --outputFlat",
+    "apollo:codegen": "rimraf src/__generated__ && apollo client:codegen src/__generated__ --target=typescript --outputFlat",
     "build": "react-scripts build",
     "test": "react-scripts test --verbose",
     "test:cov": "npm test -- --coverage --watchAll=false",
@@ -62,6 +61,7 @@
   "devDependencies": {
     "@testing-library/cypress": "^8.0.2",
     "@types/react-helmet": "^6.1.5",
+    "apollo": "^2.33.10",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12"
   },

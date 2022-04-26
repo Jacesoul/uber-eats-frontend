@@ -158,3 +158,5 @@
 - useForm 훅의 mode: "onChange"는 특정 input의 값이 변경될 때마다 실시간으로 form에서 validate를 해준다. 
 - useForm에서 setValue는 기본적으로 form안에서 원하는 값을 설정할수 있게 해준다.
 - Victory는 멋진 그래프들을 만들수 있게 해주는 react component들이 들어있는 라이브러리이다.
+- VictoryLine에서 datum은 label을 어떤 방식으로 그릴지와 관련이 있다.
+- dy는 수직방향으로 점으로부터 얼마나 떨어져 있는지를 나타낸다. 
