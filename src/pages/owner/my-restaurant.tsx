@@ -42,7 +42,18 @@ export const MyRestaurant = () => {
       },
     }
   );
-  console.log(data);
+  const chartData = [
+    { x: 1, y: 3000 },
+    { x: 2, y: 1500 },
+    { x: 3, y: 4250 },
+    { x: 4, y: 1250 },
+    { x: 5, y: 7150 },
+    { x: 6, y: 6830 },
+    { x: 7, y: 7830 },
+    { x: 8, y: 3000 },
+    { x: 9, y: 10000 },
+    { x: 10, y: 500 },
+  ];
   return (
     <div>
       <div
@@ -84,19 +95,11 @@ export const MyRestaurant = () => {
           <div className=" max-w-lg w-full mx-auto">
             <VictoryChart domainPadding={20}>
               <VictoryAxis
-                label="Amount of money"
+                tickFormat={(step) => `$${step / 1000}K`}
                 dependentAxis
-                tickValues={[20, 30, 40, 50, 60]}
               ></VictoryAxis>
-              <VictoryAxis label="Days of Life"></VictoryAxis>
-              <VictoryBar
-                data={[
-                  { x: 10, y: 20 },
-                  { x: 20, y: 5 },
-                  { x: 35, y: 55 },
-                  { x: 45, y: 99 },
-                ]}
-              ></VictoryBar>
+              <VictoryAxis tickFormat={(step) => `Day ${step}`}></VictoryAxis>
+              <VictoryBar data={chartData}></VictoryBar>
             </VictoryChart>
           </div>
         </div>
