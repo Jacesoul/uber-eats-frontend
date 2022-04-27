@@ -1,17 +1,13 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Dish } from "../../components/dish";
 import {
   VictoryAxis,
-  VictoryBar,
   VictoryChart,
   VictoryLabel,
   VictoryLine,
-  VictoryPie,
   VictoryTheme,
-  VictoryTooltip,
-  VictoryVoronoiContainer,
   VictoryZoomContainer,
 } from "victory";
 import {
@@ -25,6 +21,10 @@ import {
 } from "../../__generated__/myRestaurant";
 import { Helmet } from "react-helmet-async";
 import { useMe } from "../../hooks/useMe";
+import {
+  createPayment,
+  createPaymentVariables,
+} from "../../__generated__/createPayment";
 
 export const MY_RESTAURANT_QUERY = gql`
   query myRestaurant($input: MyRestaurantInput!) {
@@ -51,6 +51,15 @@ type IParams = {
   id: string;
 };
 
+const CREATE_PAYMENT_MUTATION = gql`
+  mutation createPayment($input: CreatePaymentInput!) {
+    createPayment(input: $input) {
+      ok
+      error
+    }
+  }
+`;
+
 export const MyRestaurant = () => {
   const { id } = useParams<IParams>();
   const { data } = useQuery<myRestaurant, myRestaurantVariables>(
@@ -63,6 +72,17 @@ export const MyRestaurant = () => {
       },
     }
   );
+  const onCompleted = (data: createPayment) => {
+    if (data.createPayment.ok) {
+      alert("Your restaurant is being promoted!");
+    }
+  };
+  const [createPaymentMutation, { loading }] = useMutation<
+    createPayment,
+    createPaymentVariables
+  >(CREATE_PAYMENT_MUTATION, {
+    onCompleted,
+  });
   const { data: userData } = useMe();
   const triggerPaddle = () => {
     // @ts-ignore
@@ -72,6 +92,16 @@ export const MyRestaurant = () => {
       Paddle.Checkout.open({
         product: 768663,
         email: userData.me.email,
+        successCallback: (data: any) => {
+          createPaymentMutation({
+            variables: {
+              input: {
+                transactionId: data.checkout.id,
+                restaurantId: Number(id),
+              },
+            },
+          });
+        },
       });
     }
   };
