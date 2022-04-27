@@ -1,8 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { Dish } from "../../components/dish";
 import { DISH_FRAGMENT, RESTAURANT_FRAGMENT } from "../../fragments";
+import { CreateOrderItemInput } from "../../__generated__/globalTypes";
 import {
   restaurant,
   restaurantVariables,
@@ -25,6 +27,15 @@ const RESTAURANT_QUERY = gql`
   ${DISH_FRAGMENT}
 `;
 
+const CREATE_ORDER_MUTATION = gql`
+  mutation createOrder($input: CreateOrderInput!) {
+    createOrder(input: $input) {
+      ok
+      error
+    }
+  }
+`;
+
 type IRestaurantParams = {
   id: string;
 };
@@ -41,9 +52,22 @@ export const Restaurant = () => {
       },
     }
   );
-  console.log(data);
+  const [orderStarted, setOrderStarted] = useState(false);
+  const [orderItems, setOrderItems] = useState<CreateOrderItemInput[]>([]);
+  const triggerStartOrder = () => {
+    setOrderStarted(true);
+  };
+  const addItemToOrder = (dishId: number) => {
+    setOrderItems((current) => [{ dishId }]);
+  };
+  console.log(orderItems);
   return (
     <div>
+      <Helmet>
+        <title>
+          {data?.restaurant.restaurant?.name || "Loading..."} | Uber Eats
+        </title>
+      </Helmet>
       <div
         className=" bg-gray-800 py-36 bg-center bg-cover"
         style={{
@@ -62,17 +86,25 @@ export const Restaurant = () => {
           </h6>
         </div>
       </div>
-      <div className="container grid sm:grid-cols-3 gap-x-5 gap-y-10 mt-10">
-        {data?.restaurant.restaurant?.menu.map((dish, index) => (
-          <Dish
-            key={index}
-            name={dish.name}
-            description={dish.description}
-            price={dish.price}
-            isCustomer={true}
-            options={dish.options}
-          ></Dish>
-        ))}
+      <div className="container pb-32 mt-20 flex flex-col items-end">
+        <button onClick={triggerStartOrder} className="btn px-10">
+          Start Order
+        </button>
+        <div className="grid sm:grid-cols-3 gap-x-5 gap-y-10 mt-10 w-full">
+          {data?.restaurant.restaurant?.menu.map((dish, index) => (
+            <Dish
+              id={dish.id}
+              orderStarted={orderStarted}
+              key={index}
+              name={dish.name}
+              description={dish.description}
+              price={dish.price}
+              isCustomer={true}
+              options={dish.options}
+              addItemToOrder={addItemToOrder}
+            ></Dish>
+          ))}
+        </div>
       </div>
     </div>
   );
