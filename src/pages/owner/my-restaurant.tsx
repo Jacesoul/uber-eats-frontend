@@ -23,6 +23,8 @@ import {
   myRestaurant,
   myRestaurantVariables,
 } from "../../__generated__/myRestaurant";
+import { Helmet } from "react-helmet-async";
+import { useMe } from "../../hooks/useMe";
 
 export const MY_RESTAURANT_QUERY = gql`
   query myRestaurant($input: MyRestaurantInput!) {
@@ -61,21 +63,27 @@ export const MyRestaurant = () => {
       },
     }
   );
-  console.log(data);
-  const chartData = [
-    { x: 1, y: 3000 },
-    { x: 2, y: 1500 },
-    { x: 3, y: 4250 },
-    { x: 4, y: 1250 },
-    { x: 5, y: 7150 },
-    { x: 6, y: 6830 },
-    { x: 7, y: 7830 },
-    { x: 8, y: 3000 },
-    { x: 9, y: 10000 },
-    { x: 10, y: 500 },
-  ];
+  const { data: userData } = useMe();
+  const triggerPaddle = () => {
+    // @ts-ignore
+    const Paddle = window.Paddle;
+    if (userData?.me.email) {
+      Paddle.Setup({ vendor: 146514 });
+      Paddle.Checkout.open({
+        product: 768663,
+        email: userData.me.email,
+      });
+    }
+  };
   return (
     <div>
+      <Helmet>
+        <title>
+          {data?.myRestaurant.restaurant?.name || "Loading..."} | Uber Eats
+        </title>
+        <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+      </Helmet>
+      <div></div>
       <div
         className=" bg-gray-700 py-28 bg-center bg-cover"
         style={{
@@ -92,16 +100,20 @@ export const MyRestaurant = () => {
         >
           Add Dish &rarr;
         </Link>
-        <Link to={``} className=" text-white bg-lime-700 py-3 px-10">
+        <span
+          onClick={triggerPaddle}
+          className=" text-white bg-lime-700 py-3 px-10 cursor-pointer"
+        >
           Buy Promotion &rarr;
-        </Link>
+        </span>
         <div className=" mt-10">
           {data?.myRestaurant.restaurant?.menu.length === 0 ? (
             <h4 className=" text-xl mb-5">Please upload a dish.</h4>
           ) : (
             <div className=" grid sm:grid-cols-3 gap-x-5 gap-y-10 mt-10">
-              {data?.myRestaurant.restaurant?.menu.map((dish) => (
+              {data?.myRestaurant.restaurant?.menu.map((dish, index) => (
                 <Dish
+                  key={index}
                   name={dish.name}
                   description={dish.description}
                   price={dish.price}

@@ -165,3 +165,6 @@
 - paddle은 소프트웨어 서비스 제품을 팔수 있는 멋진 곳이다.
 - subscription plan은 누구를 월 단위로 돈을 지불하게 만들고 싶을 때 쓰는거다. 
 - Server Notification은 user가 다운로드 하지 않아도 paddle이 알아서 우리 서버에 내용을 적용시켜준다. 즉 누가 product를 구입하면 paddle이 서버에 내용을 적용시켜준다.
+- paddle의 체크아웃에는 3가지의 옵션이 있는데 그중 하나는 체크박스가 페이지 위에 뜨는 overlay이다. user가 어디로 이동하지 않고 페이지 위에 박스가 나타난다.
+- 다른하나는 inline checkout이다. overlay는 없지만 form이 페이지의 html위에 있다.
+- 마지막으로 branded가 있는데 inline checkout과 비슷하고 CSS를 원하는 만큼 입힐수 있다.
