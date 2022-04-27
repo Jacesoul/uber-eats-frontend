@@ -168,3 +168,6 @@
 - paddle의 체크아웃에는 3가지의 옵션이 있는데 그중 하나는 체크박스가 페이지 위에 뜨는 overlay이다. user가 어디로 이동하지 않고 페이지 위에 박스가 나타난다.
 - 다른하나는 inline checkout이다. overlay는 없지만 form이 페이지의 html위에 있다.
 - 마지막으로 branded가 있는데 inline checkout과 비슷하고 CSS를 원하는 만큼 입힐수 있다.
+- Error 1 => GET https://checkout-service.paddle.com/checkout/error 400
+- Error 2 => Access to XMLHttpRequest at 'https://www.google-analytics.com/collect?v=1&t=event&tid=UA-34210082-28&cid=undefined&ds=web&ul=ko-KR&dr=http%3A%2F%2Flocalhost%3A3002%2F&dl=https%3A%2F%2Fbuy.paddle.com%2Fcheckout%2Ferror&ni=1&ec=error&ea=error&el=Sorry%2C%20the%20page%20you%20were%20looking%20for%20could%20not%20be%20found.' from origin 'https://buy.paddle.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+- Error 3 => GET https://www.google-analytics.com/collect?v=1&t=event&tid=UA-34210082-28&cid=undefined&ds=web&ul=ko-KR&dr=http%3A%2F%2Flocalhost%3A3002%2F&dl=https%3A%2F%2Fbuy.paddle.com%2Fcheckout%2Ferror&ni=1&ec=error&ea=error&el=Sorry%2C%20the%20page%20you%20were%20looking%20for%20could%20not%20be%20found. net::ERR_FAILED
