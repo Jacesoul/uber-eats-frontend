@@ -9,9 +9,10 @@ interface IDishProps {
   isCustomer?: boolean;
   options?: restaurant_restaurant_restaurant_menu_options[] | null;
   orderStarted?: boolean;
+  isSelected?: boolean;
   addItemToOrder?: (dishId: number) => void;
   removeFromOrder?: (dishId: number) => void;
-  isSelected?: boolean;
+  addOptionToItem?: (dishId: number, options: any) => void;
 }
 
 export const Dish: React.FC<IDishProps> = ({
@@ -22,9 +23,10 @@ export const Dish: React.FC<IDishProps> = ({
   isCustomer = false,
   orderStarted = false,
   options,
+  isSelected,
   addItemToOrder,
   removeFromOrder,
-  isSelected,
+  addOptionToItem,
 }) => {
   const onClick = () => {
     if (orderStarted) {
@@ -38,15 +40,17 @@ export const Dish: React.FC<IDishProps> = ({
   };
   return (
     <div
-      onClick={onClick}
-      className={`  px-8 py-4 border transition-all ${
-        isSelected
-          ? "border-gray-800 cursor-not-allowed"
-          : "hover:border-gray-800 cursor-pointer"
+      className={`  px-8 py-4 cursor-pointer border transition-all ${
+        isSelected ? "border-gray-800 " : "hover:border-gray-800 "
       }`}
     >
       <div className="mb-5">
-        <h3 className=" text-lg font-medium ">{name}</h3>
+        <h3 className=" text-lg font-medium ">
+          {name}{" "}
+          {orderStarted && (
+            <button onClick={onClick}>{isSelected ? "Remove" : "Add"}</button>
+          )}
+        </h3>
         <h4 className=" font-medium">{description}</h4>
       </div>
       <span>${price}</span>
@@ -54,7 +58,17 @@ export const Dish: React.FC<IDishProps> = ({
         <div>
           <h5 className=" my-8 mb-3 font-medium">Dish Options</h5>
           {options?.map((option, index) => (
-            <span className="flex items-center" key={index}>
+            <span
+              onClick={() =>
+                addOptionToItem
+                  ? addOptionToItem(id, {
+                      name: option.name,
+                    })
+                  : null
+              }
+              className="flex border items-center"
+              key={index}
+            >
               <h6 className=" mr-2">{option.name}</h6>
               <h6 className=" text-sm opacity-75">(${option.extra})</h6>
             </span>

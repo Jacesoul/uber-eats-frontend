@@ -174,3 +174,4 @@
 
 ### MAKING AN Order
 - find()는 find한 object를 return하거나 혹은 undefined를 return하는 function이다. 
+- state를 mutate하지 않고 새로운 state를 만들고 return하는것이 좋다. 그 이유는 react.js에서는 새 state를 확인하고 re-render하는 것이 쉽기 때문이다. state를 mutate하게 되면, react는 아무 변화도 일어나지 않았다고 생각할수 있다.
