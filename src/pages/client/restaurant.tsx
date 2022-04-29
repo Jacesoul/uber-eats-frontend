@@ -68,6 +68,9 @@ export const Restaurant = () => {
     setOrderItems([]);
   };
   const triggerConfirmOrder = () => {
+    if (placingOrder) {
+      return;
+    }
     if (orderItems.length === 0) {
       alert("Can't place empty order");
       return;
@@ -91,7 +94,7 @@ export const Restaurant = () => {
     } = data;
     if (ok) {
       alert("order created!");
-      navigate(`/order${orderId}`, { replace: true });
+      navigate(`/order/${orderId}`, { replace: true });
     }
   };
   const [createOrderMutation, { loading: placingOrder }] = useMutation<
