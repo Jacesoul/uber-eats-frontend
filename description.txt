@@ -175,3 +175,6 @@
 ### MAKING AN Order
 - find()는 find한 object를 return하거나 혹은 undefined를 return하는 function이다. 
 - state를 mutate하지 않고 새로운 state를 만들고 return하는것이 좋다. 그 이유는 react.js에서는 새 state를 확인하고 re-render하는 것이 쉽기 때문이다. state를 mutate하게 되면, react는 아무 변화도 일어나지 않았다고 생각할수 있다.
+
+### REALTIME ORDER
+- splitLink는 split이라는 함수를 사용하는데 split 함수는 3개의 인자를 가진다. 하나는 함수이고, 나머지는 어떤 값들이다. 그래서 함수가 true를 return 하게 되면 wsLink를 사용하는거고 만약 함수가 false를 return하면 httpLink를 사용하는 것이다.

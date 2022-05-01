@@ -1,16 +1,29 @@
 import { LOCALSTORAGE_TOKEN } from "./constants";
 import { setContext } from "@apollo/client/link/context";
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
+import { createClient } from "graphql-ws";
 import {
   ApolloClient,
   createHttpLink,
   InMemoryCache,
   makeVar,
+  split,
 } from "@apollo/client";
+import { getMainDefinition } from "@apollo/client/utilities";
 
 const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
+
+const wsLink = new GraphQLWsLink(
+  createClient({
+    url: "ws://localhost:4000/graphql",
+    connectionParams: {
+      "x-jwt": authTokenVar() || "",
+    },
+  })
+);
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
@@ -25,8 +38,20 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
+    );
+  },
+  wsLink,
+  authLink.concat(httpLink)
+);
+
 export const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: splitLink,
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
