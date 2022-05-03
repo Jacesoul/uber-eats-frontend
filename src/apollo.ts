@@ -18,7 +18,7 @@ export const authTokenVar = makeVar(token);
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "ws://localhost:4000/graphql",
+    url: `ws://localhost:4000/graphql`,
     connectionParams: {
       "x-jwt": authTokenVar() || "",
     },

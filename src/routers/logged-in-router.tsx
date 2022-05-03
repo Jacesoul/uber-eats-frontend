@@ -32,7 +32,7 @@ const restaurantRoutes = [
   { path: "/", component: <MyRestaurants /> },
   { path: "/add-restaurant", component: <AddRestaurant /> },
   { path: "/restaurants/:id", component: <MyRestaurant /> },
-  { path: "/restaurants/:res taurantId/add-dish", component: <AddDish /> },
+  { path: "/restaurants/:restaurantId/add-dish", component: <AddDish /> },
 ];
 
 export const LoggedInRouter = () => {

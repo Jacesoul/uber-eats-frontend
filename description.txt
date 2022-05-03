@@ -178,3 +178,4 @@
 
 ### REALTIME ORDER
 - splitLink는 split이라는 함수를 사용하는데 split 함수는 3개의 인자를 가진다. 하나는 함수이고, 나머지는 어떤 값들이다. 그래서 함수가 true를 return 하게 되면 wsLink를 사용하는거고 만약 함수가 false를 return하면 httpLink를 사용하는 것이다.
+- updateQuery는 이전의 query 결과와 새로운 subscription data가 필요한 함수이다. 
