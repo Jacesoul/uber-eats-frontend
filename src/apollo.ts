@@ -2,6 +2,7 @@ import { LOCALSTORAGE_TOKEN } from "./constants";
 import { setContext } from "@apollo/client/link/context";
 import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { createClient } from "graphql-ws";
+import { WebSocketLink } from "@apollo/client/link/ws";
 import {
   ApolloClient,
   createHttpLink,
@@ -16,14 +17,24 @@ const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
-const wsLink = new GraphQLWsLink(
-  createClient({
-    url: `ws://localhost:4000/graphql`,
+// const wsLink = new GraphQLWsLink(
+//   createClient({
+//     url: `ws://localhost:4000/graphql`,
+//     connectionParams: {
+//       "x-jwt": authTokenVar() || "",
+//     },
+//   })
+// );
+
+const wsLink = new WebSocketLink({
+  uri: `ws://localhost:4000/graphql`,
+  options: {
+    reconnect: true,
     connectionParams: {
       "x-jwt": authTokenVar() || "",
     },
-  })
-);
+  },
+});
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
