@@ -60,6 +60,7 @@ export const Order = () => {
       },
     }
   );
+  console.log(data);
 
   useEffect(() => {
     if (data?.getOrder.ok) {
