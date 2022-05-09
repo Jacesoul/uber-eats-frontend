@@ -19,6 +19,7 @@ const token = localStorage.getItem(LOCALSTORAGE_TOKEN);
 export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
+/*
 const wsLink = new WebSocketLink({
   uri:
     process.env.NODE_ENV === "production"
@@ -47,8 +48,8 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
+*/
 
-/*
 const wsLink = new GraphQLWsLink(
   createClient({
     url: `ws://localhost:4000/graphql`,
@@ -70,7 +71,6 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-*/
 
 const splitLink = split(
   ({ query }) => {
