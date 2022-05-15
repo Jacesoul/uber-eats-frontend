@@ -181,3 +181,5 @@
 - updateQuery는 이전의 query 결과와 새로운 subscription data가 필요한 함수이다. 
 - npm i google-map-react
 - console.cloud.google.com에서 [API 및 서비스] - [라이브러리]에서 Maps Javascript API에서 "사용"클릭 
+- watchPosition은 getLocation이랑 비슷한데 지켜보는 기능도 있다. 
+- onApiLoaded에서 map은 지금 당장 가지고 있는 화면의 지도 정보이다. maps는 사용할수 있는 Google Maps 객체이다. 
