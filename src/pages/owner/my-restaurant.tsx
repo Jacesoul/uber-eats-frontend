@@ -119,10 +119,11 @@ export const MyRestaurant = () => {
   const { data: subscriptionData } = useSubscription<pendingOrders>(
     PENDING_ORDERS_SUBSCRIPTION
   );
+  console.log(subscriptionData);
   const navigate = useNavigate();
   useEffect(() => {
     if (subscriptionData?.pendingOrders.id) {
-      navigate(`/orders/${subscriptionData.pendingOrders.id}`, {
+      navigate(`/order/${subscriptionData.pendingOrders.id}`, {
         replace: true,
       });
     }
